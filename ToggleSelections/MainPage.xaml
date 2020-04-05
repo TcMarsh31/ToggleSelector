@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="ToggleSelections.MainPage"
+             BackgroundColor="LightGray">
+    <Grid HorizontalOptions="Center" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!-- Android corner radius 20-->
+        <!-- ios Corner radius 10-->
+        <!-- Background Frame -->
+        <Frame Grid.Row="0" BackgroundColor="White"  Padding="0" Margin="0" HasShadow="False" VerticalOptions="Center" HeightRequest="30" WidthRequest="140" HorizontalOptions="Center">
+            <Frame.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Single">
+                    <On Platform="iOS" Value="15"></On>
+                    <On Platform="Android" Value="20"></On>
+                </OnPlatform>
+            </Frame.CornerRadius>
+        </Frame>  
+
+        <!-- Running Frame -->
+        <Frame x:Name="runningFrame" HeightRequest="30" WidthRequest="70" BackgroundColor="Green" HasShadow="False" Margin="0" Padding="0"  HorizontalOptions="Start" VerticalOptions="Center">
+            <Frame.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Single">
+                    <On Platform="iOS" Value="15"></On>
+                    <On Platform="Android" Value="20"></On>
+                </OnPlatform>
+            </Frame.CornerRadius>
+        </Frame>
+
+        <!-- Selection text1-->
+        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="70" HeightRequest="30" BackgroundColor="Transparent">
+            <StackLayout.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
+                <TapGestureRecognizer Tapped="OnText1Tapped"></TapGestureRecognizer>
+            </StackLayout.GestureRecognizers>
+            <Label x:Name="text1" Text="Text1" TextColor="White" WidthRequest="70" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"></Label>
+        </StackLayout>
+
+        <!-- Selection text2-->
+        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="70" HeightRequest="30" BackgroundColor="Transparent">
+            <StackLayout.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
+                <TapGestureRecognizer Tapped="OnText2Tapped"></TapGestureRecognizer>
+            </StackLayout.GestureRecognizers>
+            <Label x:Name="text2" Text="Text2" TextColor="Black" WidthRequest="70" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"></Label>
+        </StackLayout>
+
+    </Grid>
+</ContentPage>
